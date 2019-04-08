@@ -917,6 +917,11 @@ func (c *Collector) SetProxyFunc(p ProxyFunc) {
 	}
 }
 
+// SetClient will override the previously set http.Client
+func (c *Collector) SetClient(client *http.Client) {
+	c.backend.Client = client
+}
+
 func createEvent(eventType string, requestID, collectorID uint32, kvargs map[string]string) *debug.Event {
 	return &debug.Event{
 		CollectorID: collectorID,
